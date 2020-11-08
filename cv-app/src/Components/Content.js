@@ -1,9 +1,9 @@
-
+import Topic from './Topic'
 
 function Content(props) {
     return (
         <div className="content-main">
-            <p>Content</p>
+            <Topic/>
         </div>
     );
 }

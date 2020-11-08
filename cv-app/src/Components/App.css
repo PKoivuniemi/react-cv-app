@@ -1,10 +1,10 @@
 .App {
-  text-align: center;
   display:flex;
   flex-direction: row;
 }
 .profile-main{
   display: flex;
+  text-align: center;
   background-color: rgb(104, 53, 53);
   flex-direction: column;
   color: rgb(221, 221, 221);
@@ -15,6 +15,12 @@
 .content-main{
   display: flex;
   flex-direction: column;
+  width: 100%;
+  padding: 0 10px;
+}
+.topic-main{
+  border-bottom: solid 1px rgba(128, 128, 128, 0.692);
+  width: 100%;
 }
 
 @media only screen and (max-width: 600px) {
