@@ -1,9 +1,11 @@
 
 
-function Profile() {
+function Profile(props) {
   return (
-    <div>
-          Profile asd
+    <div className="profile-main">
+          <h1>Petteri Koivuniemi</h1>
+          <img />
+          <p>Profile</p>
     </div>
   );
 }
