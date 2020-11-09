@@ -1,14 +1,15 @@
 import App from './App';
 import Topic from './Topic'
 import React from 'react';
+import content from '../cvContent.js';
 
 function Content(props) {
     return (
         <div className="content-main">
             {
-                App.cvContent.map(content =>
-                    <React.Fragment key={content.id}>
-                        <Topic id={content.id}/>
+                content.map(cell =>
+                    <React.Fragment key={cell.id}>
+                        <Topic id={cell.id}/>
                     </React.Fragment>
                     )
             }
