@@ -18,6 +18,13 @@
   width: 100%;
   padding: 0 10px;
 }
+.header-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  
+}
 .topic-main{
   border-bottom: solid 1px rgba(128, 128, 128, 0.692);
   width: 100%;
