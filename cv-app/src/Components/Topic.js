@@ -1,14 +1,23 @@
 import App from './App';
-import content from '../cvContent.js';
-import { useState, useEffect } from 'react';
+import content  from '../cvContent.js';
+import { useState, useEffect, useRef } from 'react';
 
 function Topic(props) {
     const [cvcontent, setContent] = useState(content[props.id]);
     const [editMode, setEditMode] = useState(false);
     
+    const editedHeader = useRef("");
+    const editedDate = useRef("");
+    const editedContent = useRef("");
+
     useEffect(() => {
         console.log(cvcontent);
     });
+    /*
+    useEffect(() => {
+        setContent(content[props.id]);
+    }, content[props.id]);
+    */
     
     const toggleEditMode = (e) => {
         e.preventDefault();
@@ -16,7 +25,17 @@ function Topic(props) {
     }
     const setCvData = (e) => {
         e.preventDefault();
-        
+        const tmp = cvcontent;
+    }
+    function AddNewPart() {
+        let tmp = cvcontent;
+        tmp.parts = [...tmp.parts,
+            {
+            header: "Uusi työkokemus",
+            date: "Aikajakso",
+            textcontent: "Lisää kuvaus työstä"
+        }];
+        setContent({ ...tmp });
      }
     
     return (
@@ -43,18 +62,22 @@ function Topic(props) {
                 cvcontent?.parts?.map((topic) => {
                         const elems = [
                             <div className="header-row">
-                                <input placeholder={topic.header}/>
-                                <input placeholder={topic.date}/>
+                                <input ref={ editedHeader } placeholder={topic.header}/>
+                                <input ref={ editedDate } placeholder={topic.date}/>
                             </div>,
-                            <input placeholder={topic.textcontent} />,
+                            <input ref={ editedContent } placeholder={topic.textcontent} />,
                             <button onClick={ e => setCvData(e) }>Tallenna</button>
                         ];
                         return elems;
                     })
                 }
                 </form>
+                
             }
-            <button onClick={e => toggleEditMode(e)}>{ editMode ? "Takaisin" : "Muokkaa" }</button>
+            <button onClick={e => toggleEditMode(e)}>{editMode ? "Takaisin" : "Muokkaa"}</button>
+            {editMode===true &&
+                <button onClick={e => { e.preventDefault(); AddNewPart() } }>Lisää</button>
+            }
         </div>
     );
 }
