@@ -17,6 +17,8 @@
   flex-direction: column;
   width: 100%;
   padding: 0 1%;
+  height: 100vh;
+  overflow-y: auto;
 }
 .header-row{
   display: flex;
@@ -39,6 +41,6 @@
     max-height: 300px;
   }
   .content-main{
-
+    overflow-y: unset;
   }
 }

@@ -29,13 +29,16 @@ function Topic(props) {
     }
     function AddNewPart() {
         let tmp = cvcontent;
-        tmp.parts = [...tmp.parts,
+        if (tmp !== undefined && tmp.parts !== undefined)
+        {
+            tmp.parts = [...tmp.parts,
             {
-            header: "Uusi otsikko",
-            date: "Aikajakso",
-            textcontent: "Lisää kuvaus"
-        }];
-        setContent({ ...tmp });
+                header: "Uusi otsikko",
+                date: "Aikajakso",
+                textcontent: "Lisää kuvaus"
+            }];
+            setContent({ ...tmp });
+         }
      }
     
     return (
