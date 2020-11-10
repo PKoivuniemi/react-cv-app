@@ -31,9 +31,9 @@ function Topic(props) {
         let tmp = cvcontent;
         tmp.parts = [...tmp.parts,
             {
-            header: "Uusi työkokemus",
+            header: "Uusi otsikko",
             date: "Aikajakso",
-            textcontent: "Lisää kuvaus työstä"
+            textcontent: "Lisää kuvaus"
         }];
         setContent({ ...tmp });
      }
