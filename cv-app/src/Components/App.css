@@ -31,6 +31,10 @@
   border-bottom: solid 1px rgba(128, 128, 128, 0.692);
   width: 95%;
 }
+.content-editor{
+  width: 50%;
+  min-height: 100px;
+}
 
 @media only screen and (max-width: 600px) {
   .App{

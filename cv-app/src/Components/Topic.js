@@ -23,9 +23,14 @@ function Topic(props) {
         e.preventDefault();
         setEditMode(!editMode);
     }
-    const setCvData = (e) => {
-        e.preventDefault();
+    const setCvData = (id) => {
         const tmp = cvcontent;
+        if (tmp !== undefined && tmp.parts !== undefined) {
+            tmp.parts[id].header = editedHeader.current;
+            tmp.parts[id].date = editedDate.current;
+            tmp.parts[id].textcontent = editedContent.current;
+            setContent({ ...tmp });
+         }    
     }
     function AddNewPart() {
         let tmp = cvcontent;
@@ -62,14 +67,15 @@ function Topic(props) {
             {editMode===true &&
                 <form>
                 {
-                cvcontent?.parts?.map((topic) => {
+                    cvcontent?.parts?.map((topic) => {
+                        let key = cvcontent.parts.findIndex(() => { return cvcontent.parts.header === topic.header });
                         const elems = [
                             <div className="header-row">
-                                <input ref={ editedHeader } placeholder={topic.header}/>
-                                <input ref={ editedDate } placeholder={topic.date}/>
+                                <input ref={ editedHeader } value={topic.header}/>
+                                <input ref={ editedDate } value={topic.date}/>
                             </div>,
-                            <input ref={ editedContent } placeholder={topic.textcontent} />,
-                            <button onClick={ e => setCvData(e) }>Tallenna</button>
+                            <textarea className="content-editor" ref={ editedContent } value={topic.textcontent} />,
+                            <button onClick={e => { e.preventDefault(); setCvData(key) }}>Tallenna</button>
                         ];
                         return elems;
                     })
