@@ -26,10 +26,14 @@ function Topic(props) {
     const setCvData = (id) => {
         const tmp = cvcontent;
         if (tmp !== undefined && tmp.parts !== undefined) {
-            tmp.parts[id].header = editedHeader.current;
-            tmp.parts[id].date = editedDate.current;
-            tmp.parts[id].textcontent = editedContent.current;
+            tmp.parts[id].header = editedHeader.current.value;
+            tmp.parts[id].date = editedDate.current.value;
+            tmp.parts[id].textcontent = editedContent.current.value;
             setContent({ ...tmp });
+            console.log("set new data to id " + id + ": header "
+                + tmp.parts[id].header +
+                ", date " + tmp.parts[id].date +
+                ", content " + tmp.parts[id].textcontent);
          }    
     }
     function AddNewPart() {
@@ -68,13 +72,14 @@ function Topic(props) {
                 <form>
                 {
                     cvcontent?.parts?.map((topic) => {
-                        let key = cvcontent.parts.findIndex(() => { return cvcontent.parts.header === topic.header });
+                        let key = cvcontent.parts.findIndex(part => part.header === topic.header);
+                        console.log(key);
                         const elems = [
                             <div className="header-row">
                                 <input ref={ editedHeader } defaultValue={topic.header}/>
                                 <input ref={ editedDate } defaultValue={topic.date}/>
                             </div>,
-                            <textarea className="content-editor" ref={ editedContent } defaultValue={topic.textcontent} />,
+                            <textarea className="content-editor" ref={ editedContent }>{topic.textcontent}</textarea>,
                             <button onClick={e => { e.preventDefault(); setCvData(key) }}>Tallenna</button>
                         ];
                         return elems;
