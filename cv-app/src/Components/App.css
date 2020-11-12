@@ -32,6 +32,9 @@
   width: 95%;
 }
 .content-editor{
+  width: 95%;
+}
+.content-editor-textfield{
   width: 50%;
   min-height: 100px;
 }
