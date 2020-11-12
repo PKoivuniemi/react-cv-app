@@ -1,15 +1,12 @@
-import App from './App';
 import content  from '../cvContent.js';
-import { useState, useEffect, useRef } from 'react';
-import InputField from './InputField';
+import React, { useState, useEffect, useRef } from 'react';
+import ContentEditor from './ContentEditor';
 
 function Topic(props) {
     const [cvcontent, setContent] = useState(content[props.id]);
     const [editMode, setEditMode] = useState(false);
     
-    const editedHeader = useRef("");
-    const editedDate = useRef("");
-    const editedContent = useRef("");
+
 
     useEffect(() => {
         console.log(cvcontent);
@@ -24,12 +21,12 @@ function Topic(props) {
         e.preventDefault();
         setEditMode(!editMode);
     }
-    const setCvData = (id) => {
+    const setCvData = (id, header, date, content) => {
         const tmp = cvcontent;
         if (tmp !== undefined && tmp.parts !== undefined) {
-            tmp.parts[id].header = editedHeader.current.value;
-            tmp.parts[id].date = editedDate.current.value;
-            tmp.parts[id].textcontent = editedContent.current.value;
+            tmp.parts[id].header = header;
+            tmp.parts[id].date = date;
+            tmp.parts[id].textcontent = content;
             setContent({ ...tmp });
             console.log("set new data to id " + id + ": header "
                 + tmp.parts[id].header +
@@ -69,7 +66,17 @@ function Topic(props) {
                 )
             }
 
-            {editMode===true &&
+            {editMode === true &&
+                cvcontent?.parts?.map((topic) => {
+                    let key = cvcontent?.parts?.findIndex(part => part === topic);
+                       return <ContentEditor id={key}
+                            header={topic.header}
+                            date={topic.date}
+                            textcontent={topic.textcontent}
+                            setCvData={ setCvData }
+                            />
+                 })
+                /*
                 <form>
                 {
                     cvcontent?.parts?.map((topic) => {
@@ -87,7 +94,7 @@ function Topic(props) {
                     })
                 }
                 </form>
-                
+                */
             }
             <button onClick={e => toggleEditMode(e)}>{editMode ? "Takaisin" : "Muokkaa"}</button>
             {editMode===true &&
