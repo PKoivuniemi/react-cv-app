@@ -71,10 +71,10 @@ function Topic(props) {
                         let key = cvcontent.parts.findIndex(() => { return cvcontent.parts.header === topic.header });
                         const elems = [
                             <div className="header-row">
-                                <input ref={ editedHeader } value={topic.header}/>
-                                <input ref={ editedDate } value={topic.date}/>
+                                <input ref={ editedHeader } defaultValue={topic.header}/>
+                                <input ref={ editedDate } defaultValue={topic.date}/>
                             </div>,
-                            <textarea className="content-editor" ref={ editedContent } value={topic.textcontent} />,
+                            <textarea className="content-editor" ref={ editedContent } defaultValue={topic.textcontent} />,
                             <button onClick={e => { e.preventDefault(); setCvData(key) }}>Tallenna</button>
                         ];
                         return elems;
