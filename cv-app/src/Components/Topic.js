@@ -34,6 +34,13 @@ function Topic(props) {
                 ", content " + tmp.parts[id].textcontent);
             }
     }
+
+    const removeCvData = (id) => {
+        let tmp = cvcontent;
+        tmp.parts = tmp.parts.filter(part => part !== tmp.parts[id]);
+        setContent({ ...tmp });
+     }
+
     function AddNewPart() {
         let tmp = cvcontent;
         if (tmp !== undefined && tmp.parts !== undefined)
@@ -69,11 +76,12 @@ function Topic(props) {
             {editMode === true &&
                 cvcontent?.parts?.map((topic) => {
                     let key = cvcontent?.parts?.findIndex(part => part === topic);
-                       return <ContentEditor id={key}
-                            header={topic.header}
-                            date={topic.date}
-                            textcontent={topic.textcontent}
-                            setCvData={ setCvData }
+                    return <ContentEditor id={key}
+                        header={topic.header}
+                        date={topic.date}
+                        textcontent={topic.textcontent}
+                        setCvData={setCvData}
+                        removeCvData={removeCvData}
                             />
                  })
                 /*
