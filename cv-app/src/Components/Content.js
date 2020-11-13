@@ -11,9 +11,8 @@ function Content(props) {
                     <React.Fragment key={cell.id}>
                         <Topic id={cell.id}/>
                     </React.Fragment>
-                    )
+                )
             }
-            <Topic/>
         </div>
     );
 }
