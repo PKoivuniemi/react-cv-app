@@ -31,6 +31,7 @@
   border-bottom: solid 1px rgba(128, 128, 128, 0.692);
   padding-bottom: 10px;
   width: 60%;
+  min-width: 350px;
 }
 .content-editor{
   width: 95%;
@@ -50,5 +51,9 @@
   }
   .content-main{
     overflow-y: unset;
+  }
+  .topic-main{
+    width: 90%;
+    margin: 0 auto;
   }
 }
