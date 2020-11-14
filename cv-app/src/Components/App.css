@@ -12,6 +12,9 @@
   min-width: 250px;
   height: 100vh;
 }
+.profile-main p{
+  margin: 0 10px 10px 10px;
+}
 .content-main{
   display: flex;
   flex-direction: column;
