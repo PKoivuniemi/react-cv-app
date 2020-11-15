@@ -4,7 +4,6 @@ function Profile(props) {
   return (
     <div className="profile-main">
       <h1>{props.name}</h1>
-      <img />
       <p>
         Valmistuin tietojenkäsittelyn tradenomiksi Tampereen ammattikorkeakoulusta
         vuoden 2019 lopussa. Olen kiinnostunut tekemään töitä fullstack- tai frontend-kehityksen parissa.
