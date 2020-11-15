@@ -22,5 +22,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-src/cvContent.js
+# src/cvContent.js
 debug.log
