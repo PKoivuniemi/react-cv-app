@@ -84,25 +84,6 @@ function Topic(props) {
                         removeCvData={removeCvData}
                             />
                  })
-                /*
-                <form>
-                {
-                    cvcontent?.parts?.map((topic) => {
-                        let key = cvcontent.parts.findIndex(part => part === topic);
-                        console.log(key);
-                        const elems = [
-                            <div className="header-row">
-                                <InputField ref={editedHeader} name='header' defaultValue={ topic.header }/>
-                                <InputField ref={editedDate} name="date" defaultValue={ topic.date }/>
-                            </div>,
-                            <textarea className="content-editor" ref={editedContent} name="textcontent">{topic.textcontent}</textarea>,
-                            <button onClick={e => { e.preventDefault(); setCvData(key) }}>Tallenna</button>
-                        ];
-                        return elems;
-                    })
-                }
-                </form>
-                */
             }
             <button onClick={e => toggleEditMode(e)}>{editMode ? "Takaisin" : "Muokkaa"}</button>
             {editMode===true &&
