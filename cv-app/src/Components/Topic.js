@@ -6,15 +6,10 @@ function Topic(props) {
     const [cvcontent, setContent] = useState(content[props.id]);
     const [editMode, setEditMode] = useState(false);
     
-
-
+    /*
     useEffect(() => {
         console.log(cvcontent);
     });
-    /*
-    useEffect(() => {
-        setContent(content[props.id]);
-    }, content[props.id]);
     */
     
     const toggleEditMode = (e) => {
@@ -28,11 +23,14 @@ function Topic(props) {
             tmp.parts[id].date = date;
             tmp.parts[id].textcontent = content;
             setContent({ ...tmp });
+            /*
             console.log("set new data to id " + id + ": header "
                 + tmp.parts[id].header +
                 ", date " + tmp.parts[id].date +
                 ", content " + tmp.parts[id].textcontent);
+                */
             }
+            
     }
 
     const removeCvData = (id) => {
