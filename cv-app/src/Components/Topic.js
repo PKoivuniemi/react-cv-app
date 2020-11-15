@@ -61,14 +61,14 @@ function Topic(props) {
 
             { editMode===false &&
                 cvcontent?.parts?.map((topic) => {
-                    const elems = [
+                    let key = cvcontent?.parts?.findIndex(part => part === topic);
+                    return <React.Fragment key={key}>
                         <div className="header-row">
                             <p><strong>{topic.header}</strong></p>
                             <p><strong>{topic.date}</strong></p>
-                        </div>,
+                        </div>
                         <p>{topic.textcontent}</p>
-                    ];
-                    return elems;
+                    </React.Fragment>
                  }
                 )
             }
@@ -76,7 +76,7 @@ function Topic(props) {
             {editMode === true &&
                 cvcontent?.parts?.map((topic) => {
                     let key = cvcontent?.parts?.findIndex(part => part === topic);
-                    return <ContentEditor id={key}
+                    return <ContentEditor key={key} id={key}
                         header={topic.header}
                         date={topic.date}
                         textcontent={topic.textcontent}
