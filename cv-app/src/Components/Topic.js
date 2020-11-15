@@ -39,6 +39,7 @@ function Topic(props) {
         let tmp = cvcontent;
         tmp.parts = tmp.parts.filter(part => part !== tmp.parts[id]);
         setContent({ ...tmp });
+        setEditMode(false);
      }
 
     function AddNewPart() {
